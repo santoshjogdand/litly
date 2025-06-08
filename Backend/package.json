@@ -1,0 +1,20 @@
+{
+  "name": "litly",
+  "version": "1.0.0",
+  "description": "Url Shortner",
+  "homepage": "https://github.com/santoshjogdand/litly#readme",
+  "bugs": {
+    "url": "https://github.com/santoshjogdand/litly/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santoshjogdand/litly.git"
+  },
+  "license": "ISC",
+  "author": "Santosh Jogdand",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
