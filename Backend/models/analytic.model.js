@@ -15,4 +15,6 @@ const AnalyticSchema = Schema({
         type: Date,
         default: Date.now
     }
-})
+});
+
+export default model("Analytic",AnalyticSchema);
