@@ -23,7 +23,7 @@ const LinkSchema = Schema({
         type: Date,
         default: Date.now()
     }
-})
+});
 
 
-export default model("Link", LinkSchema)
+export default model("Link", LinkSchema);
