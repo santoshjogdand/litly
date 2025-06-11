@@ -22,14 +22,6 @@ const UserSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Link"
     }],
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
-    },
     // isSubsscribed: {
     //     type: Boolean,
     //     default: false
@@ -38,11 +30,11 @@ const UserSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     ref: ""
     // }
-});
+},{timestamps: true});
 
 UserSchema.pre("save",async function(next){
     if(this.isModified("password")){
-        this.password = await bcrypt.hash(this,this.password, 10);
+        this.password = await bcrypt.hash(this.password, 10);
     }
     if(this.isModified()){
         this.updatedAt = Date.now()
