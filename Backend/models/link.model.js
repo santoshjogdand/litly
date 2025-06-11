@@ -5,25 +5,21 @@ const LinkSchema = Schema({
         type: String,
         required: true
     },
+    clickCount:{
+        type: Number,
+        default: 0
+    },
     shortCode: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
     },
     createdBy: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
-    },
-    clickCount:{
-        type: Number,
-        default: 0
-    },
-    createdAt:{
-        type: Date,
-        default: Date.now
     }
-});
+},{timestamps: true});
 
 
 export default model("Link", LinkSchema);
