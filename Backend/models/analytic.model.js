@@ -1,20 +1,17 @@
 import {model, Schema} from "mongoose"
 
-const AnalyticSchema = Schema({
+const AnalyticSchema = new Schema({
     link: {
         type: Schema.Types.ObjectId,
-        ref: "Link"
+        ref: "Link",
+        index: true
     },
     userAgent: {
         type: String  
     },
     ipAddress: {
         type: String
-    },
-    clickAt: {
-        type: Date,
-        default: Date.now
     }
-});
+},{timestamps: true});
 
 export default model("Analytic",AnalyticSchema);
