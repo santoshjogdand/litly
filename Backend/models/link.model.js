@@ -1,5 +1,6 @@
 import { Schema, model } from "mongoose";
 
+
 const LinkSchema = Schema({
     originalUrl: { 
         type: String,
