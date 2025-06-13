@@ -3,26 +3,38 @@ import asyncHandler from "../utils/AsyncHandler.js"
 import ApiError from "../utils/ApiError.js"
 import ApiResponse from "../utils/ApiResponse.js"
 import Analytics from "../models/analytic.model.js"
-
+import UAParser from 'ua-parser-js';
+import requestIp from 'request-ip';
+import { detectSource } from "../utils/refererDetector.js"
 const redirectLink = asyncHandler(async (req, res) => {
-    const shortCode = req.params.shortcode;
-    const rawIP = req.headers['x-forwarded-for']?.split(',').shift() || req.socket.remoteAddress;
-    const ipAddress = rawIP.startsWith('::ffff:') ? rawIP.replace('::ffff:', '') : rawIP;
-    console.log(shortCode)
-    const existedShortCode = await Link.findOne({ shortCode })
-    console.log(existedShortCode)
-    if (!existedShortCode) {
-        throw new ApiError(404, "Page not found!")
-    }
-    existedShortCode.clickCount += 1
-    existedShortCode.save()
-    const analytics = await Analytics.create({
-            link: existedShortCode._id,
-            userAgent: req.headers['user-agent'],
-            ipAddress: ipAddress
-    })
-    res.redirect(existedShortCode.originalUrl)
-    // res.status(200).json(new ApiResponse(existedShortCode.originalUrl, "Redirecting to " + existedShortCode.originalUrl))
-})
+  const ua = new UAParser(req.headers['user-agent']).getResult();
+  const ip = requestIp.getClientIp(req);
+  const referer = req.headers.referer || '';
+  const { source, medium } = detectSource(referer);
+
+  const shortCode = req.params.shortcode;
+  const existedShortCode = await Link.findOne({ shortCode });
+
+  if (!existedShortCode) {
+    throw new ApiError(404, "Page not found!");
+  }
+
+  existedShortCode.clickCount += 1;
+  await existedShortCode.save();
+
+  await Analytics.create({
+    link: existedShortCode._id,
+    ipAddress: ip,
+    browser: ua.browser.name,
+    os: ua.os.name,
+    device: ua.device.type || 'Desktop',
+    source,
+    medium,
+    referer: referer || 'unknown',
+  });
+
+  res.redirect(existedShortCode.originalUrl);
+});
+
 
 export default redirectLink

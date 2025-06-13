@@ -1,4 +1,4 @@
-import {model, Schema} from "mongoose"
+import { model, Schema } from "mongoose"
 
 const AnalyticSchema = new Schema({
     link: {
@@ -6,12 +6,36 @@ const AnalyticSchema = new Schema({
         ref: "Link",
         index: true
     },
-    userAgent: {
-        type: String  
-    },
     ipAddress: {
         type: String
-    }
-},{timestamps: true});
+    },
+    browser: {
+        type: String
+    },
+    os: { 
+        type: String, 
+        default: "Unknown" 
+    },
+    device: { 
+        type: String, 
+        default: "Unknown" 
+    },
+    source: { 
+        type: String, 
+        default: "Direct" 
+    },
+    medium: { 
+        type: String, 
+        default: "Unknown" 
+    },
+    referer: { 
+        type: String, 
+        default: "Unknown" 
+    },
+    // campaign:{ 
+    //     type: String, 
+    //     default: "Unknown" 
+    // }
+}, { timestamps: true });
 
-export default model("Analytic",AnalyticSchema);
+export default model("Analytic", AnalyticSchema);
