@@ -23,7 +23,7 @@ const getUrlAnalytic = asyncHandler(async (req, res) => {
         _id: urlid
     }).select("_id")
     if (!urlFound) {
-        throw new ApiError(404, "Url not found for user")
+        throw new ApiError(405, "Url not found for user")
     }
     const url = await Analytics.find({
         link: urlid
@@ -36,21 +36,18 @@ const getUrlAnalytic = asyncHandler(async (req, res) => {
 const deleteUrl = asyncHandler(async (req, res) => {
     const userid = req.userid
     const urlid = req.params.id
-    const urlFound = await Link.findOne({
+    const urlFound = await Link.findOneAndDelete({
         createdBy: userid,
         _id: urlid
     });
+    console.log(urlFound)
     if (!urlFound) {
         throw new ApiError(409, "Url doesnt exists")
     }
-    const analyticData = await Analytics.findOne({
+    const analyticData = await Analytics.findOneAndDelete({
         Link: urlFound._id
     })
-    if (analyticData) {
-        await analyticData.remove()
-    }
-    await urlFound.remove()
-
+    
     res.status(200).json(new ApiResponse({}, "Shortned url removed"))
 
 })

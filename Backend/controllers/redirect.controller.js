@@ -3,7 +3,7 @@ import asyncHandler from "../utils/AsyncHandler.js"
 import ApiError from "../utils/ApiError.js"
 import ApiResponse from "../utils/ApiResponse.js"
 import Analytics from "../models/analytic.model.js"
-import UAParser from 'ua-parser-js';
+import {UAParser} from 'ua-parser-js';
 import requestIp from 'request-ip';
 import { detectSource } from "../utils/refererDetector.js"
 const redirectLink = asyncHandler(async (req, res) => {
