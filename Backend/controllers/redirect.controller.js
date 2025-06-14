@@ -13,6 +13,9 @@ const redirectLink = asyncHandler(async (req, res) => {
   const { source, medium } = detectSource(referer);
 
   const shortCode = req.params.shortcode;
+  if(!shortCode){
+    throw new ApiError(404, "Page not found")
+  }
   const existedShortCode = await Link.findOne({ shortCode });
 
   if (!existedShortCode) {
