@@ -14,7 +14,9 @@ const redirectLink = asyncHandler(async (req, res) => {
 
   const shortCode = req.params.shortcode;
   if(!shortCode){
-    throw new ApiError(404, "Page not found")
+    res.status(200).json({
+      "Incomplete url"
+    })
   }
   const existedShortCode = await Link.findOne({ shortCode });
 
