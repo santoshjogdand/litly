@@ -16,7 +16,7 @@ const redirectLink = asyncHandler(async (req, res) => {
   const existedShortCode = await Link.findOne({ shortCode });
 
   if (!existedShortCode) {
-    throw new ApiError(404, "Page not found!");
+    throw new ApiError(401, "Page not found!");
   }
 
   existedShortCode.clickCount += 1;
