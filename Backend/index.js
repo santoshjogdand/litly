@@ -10,4 +10,4 @@ connectDB().then(() => {
     app.listen(PORT, () => {
         console.log(`🚀 Server running at port: ${PORT}`);
     })
-}).catch((err)=>console.log("Error occured: "), err)
+}).catch((err)=>console.log("Error occured: ", err));

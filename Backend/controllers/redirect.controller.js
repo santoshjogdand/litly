@@ -15,7 +15,7 @@ const redirectLink = asyncHandler(async (req, res) => {
   const shortCode = req.params.shortcode;
   if(!shortCode){
     res.status(200).json({
-      "Incomplete url"
+      data: "Incomplete url"
     })
   }
   const existedShortCode = await Link.findOne({ shortCode });
