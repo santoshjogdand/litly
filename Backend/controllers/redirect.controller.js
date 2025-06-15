@@ -13,7 +13,7 @@ const redirectLink = asyncHandler(async (req, res) => {
   const { source, medium } = detectSource(referer);
 
   const shortCode = req.params.shortcode;
-  if(!shortCode){
+  if(shortCode=""){
     res.status(200).json({
       data: "Incomplete url"
     })
