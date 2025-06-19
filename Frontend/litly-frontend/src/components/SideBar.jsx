@@ -1,5 +1,4 @@
     import { House, Link, ChartNoAxesCombined, CircleChevronLeft } from 'lucide-react'
-    import { useState } from 'react'
     import SideBarMenu from './SideBarMenu.jsx'
 
 
