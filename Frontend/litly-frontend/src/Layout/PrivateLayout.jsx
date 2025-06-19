@@ -2,13 +2,17 @@ import React from 'react'
 import UserHeader from '../components/UserHeader'
 import { Outlet } from 'react-router-dom'
 import SideBar from '../components/SideBar'
+import { useState } from 'react'
+
 
 function PrivateLayout() {
+  const [status, setStatus] = useState(true);
+
   return (
     <>
-      <SideBar/>
+      <SideBar status={status} setStatus={setStatus} />
       <UserHeader />
-      <main className='h-[100dvh] bg-[#ffeafc] overflow-hidden'>
+      <main className={`${status ? 'ml-60' : 'ml-20' }  pt-18 h-[100dvh] overflow-auto scrollbar-hide bg-purple-200 transition-all ease-in-out duration-300`}>
         <Outlet />
       </main>
     </>
