@@ -1,5 +1,4 @@
-import React from 'react'
-import { CircleUser, HandHeart, User2Icon, UserCheck2Icon, UserCircle, UserX2Icon } from 'lucide-react';
+import { HandHeart, User2Icon } from 'lucide-react';
 
 function UserHeader() {
   return (
