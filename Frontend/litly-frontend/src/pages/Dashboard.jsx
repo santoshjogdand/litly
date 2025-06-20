@@ -16,7 +16,7 @@ function Dashboard() {
 
   return (
     <div className='text-black h-full w-full overflow-auto flex justify-center items-center font-sans'>
-      <div className="container h-[25rem] w-[50rem] shadow-2xl rounded-4xl bg-white p-10 flex flex-col justify-around">
+      <div className="container h-[25rem] w-[50rem] rounded-4xl bg-white p-10 flex flex-col justify-around">
         <div className="section1 flex flex-col gap-1">
           <h1 className='text-2xl font-bold '>Create short link</h1>
           <p className=' text-sm'>Quickly create random and custom short links.</p>
