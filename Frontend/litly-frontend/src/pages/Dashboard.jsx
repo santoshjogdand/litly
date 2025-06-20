@@ -1,6 +1,7 @@
 import { Flame } from 'lucide-react';
 import React, { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
+import CustomShortModal from '../components/CustomShortModal';
 
 function Dashboard() {
   const [hostname, setHostname] = useState('');
@@ -33,6 +34,7 @@ function Dashboard() {
         <div className="CreatedShortLink">
             <h2 className=''><span className='font-medium'>Shortlink: </span> </h2>
         </div>
+        <CustomShortModal className="hidden"/>
       </div>
     </div>
   )
