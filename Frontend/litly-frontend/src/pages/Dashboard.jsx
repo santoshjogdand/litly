@@ -14,7 +14,9 @@ function Dashboard() {
 
   return (
     <div className='text-black h-full w-full overflow-auto flex justify-center items-center font-sans'>
+      <div className="container h-[25rem] w-[50rem] shadow-2xl rounded-4xl bg-white p-10 flex flex-col justify-around">
 
+      </div>
     </div>
   )
 }
