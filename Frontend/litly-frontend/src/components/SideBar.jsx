@@ -31,7 +31,7 @@
                         Litly
                     </span>
                 </div>
-                <div className={`h-full border-r mt-1 border-[#dbe0eb] shadow-lg bg-white py-10 flex flex-col gap-6 transition-all duration-300 ease-in-out ${status ? 'w-full' : 'w-20'}`}>
+                <div className={`h-full mt-1 shadow-lg bg-white py-10 flex flex-col gap-6 transition-all duration-300 ease-in-out ${status ? 'w-full' : 'w-20'}`}>
 
                     <span className='w-4 h-4 relative -mt-14 ml-auto mr-[-5px] transition-all ease-in-out duration-300'><CircleChevronLeft className={`bg-[#a455cf] rounded-full text-white transition-transform duration-300 ease-in-out ${status ? 'rotate-0' : 'rotate-180'}`} onClick={modifyStatus} /></span>
                         <SideBarMenu elementArray={elements} status={status} />
