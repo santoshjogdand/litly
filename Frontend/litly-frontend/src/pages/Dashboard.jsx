@@ -2,6 +2,7 @@ import { Flame } from 'lucide-react';
 import React, { useState, useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
 import CustomShortModal from '../components/CustomShortModal';
+import DashboardButton from '../components/DashboardButton';
 
 function Dashboard() {
   const [hostname, setHostname] = useState('');
@@ -27,8 +28,8 @@ function Dashboard() {
           <label htmlFor="url" className='font-medium'>Enter your destination URL</label>
           <input type="text" placeholder='https://example.com/your-url' className='border-1 rounded-md h-10 p-4' id='url' />
           <div className="buttons flex gap-2 justify-center">
-            <button className='border-1 rounded-md h-10 bg-purple-500 text-lg px-3 text-white font-medium'>Create random shortlink</button>
-            <button className='flex justify-center items-center border-1 rounded-md h-10 px-3 text-lg text-white font-medium bg-purple-500'><Flame/>Create custom shortlink</button>
+            <DashboardButton buttonTXT={"Create random shortlink"} />
+            <DashboardButton buttonTXT={"Create custom shortlink"} Icon={Flame} />
           </div>
         </div>
         <div className="CreatedShortLink">
