@@ -1,11 +1,17 @@
 import { HandHeart, Search, User2Icon } from 'lucide-react';
+import { useState } from 'react';
 
 function UserHeader() {
+  const [value, setValue] = useState('');
+  const searchLink = () =>{
+    console.log(value)
+    alert(`Search query: ${value}`);
+  }
   return (
     <header className='w-full fixed z-10 h-18 border-b-1 border-[#dbe0eb] bg-white shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)]' >
       <nav className='h-18 fixed flex items-center gap-10 justify-end px-10 left-40 right-0 w-auto py-9'>
         <div className="text-white w-80 h-11 flex items-center justify-around px-4 gap-2 searchBar bg-purple-500 hover:shadow-purple-500 shadow rounded-3xl">
-          <input className=' outline-none w-full ' placeholder='Search'/> <Search />
+          <input className=' outline-none w-full ' value={value} onChange={(e)=>setValue(e.target.value)}  placeholder='Search'/> <Search onClick={searchLink} />
         </div>
         <div className='flex gap-4 items-center justify-centerp-0 m-0 '>
           <button className='h-[40px] w-[8rem] text-center bg-purple-500 outline-none rounded-md border-1 border-black font-medium  shadow-[0px_3px_0px_0px_rgba(0,0,0)] flex items-center justify-center gap-1 px-2 text-white hover:bg-purple-600 cursor-pointer'><HandHeart className='stroke-[1.5px]' />Donate</button>
