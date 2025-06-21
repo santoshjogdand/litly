@@ -26,7 +26,7 @@ function UserHeader() {
             <input className='outline-none w-full' value={value} onChange={(e) => setValue(e.target.value)} placeholder='Search' /> <Search onClick={searchLink} />
           </div>
           <div className='flex gap-4 items-center justify-center p-0 m-0 '>
-            <button className='h-[40px] w-[8rem] text-center bg-purple-500 outline-none rounded-md border-1 border-black font-medium  shadow-[0px_3px_0px_0px_rgba(0,0,0)] flex items-center justify-center gap-1 px-2 text-white hover:bg-purple-600 cursor-pointer'><HandHeart className='stroke-[1.5px]' />Donate</button>
+            <button className='h-[40px] w-[8rem] text-center md:bg-purple-500 bg-purple-400 outline-none rounded-md border-1 border-black font-medium  shadow-[0px_3px_0px_0px_rgba(0,0,0)] flex items-center justify-center gap-1 px-2 text-white hover:bg-purple-600 active:bg-purple-500 transition-colors duration-100 cursor-pointer'><HandHeart className='stroke-[1.5px]' />Donate</button>
             <div className="userprofile flex items-center gap-3">
               <span className="w-[40px] h-[40px] rounded-full border-1 border-black text-center flex items-center justify-center text-xl">
                 <User2Icon className='stroke-[1.5px]' />
