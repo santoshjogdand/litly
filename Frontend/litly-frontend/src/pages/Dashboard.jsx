@@ -16,7 +16,7 @@ function Dashboard() {
 
   return (
     <div className='text-black h-full w-full overflow-auto flex justify-center items-center font-sans'>
-      <div className="container h-[25rem] w-[50rem] rounded-4xl bg-white p-10 flex flex-col justify-around">
+      <div className="container h-[30rem] rounded-xl bg-white p-8 flex flex-col justify-around mx-8">
         <div className="section1 flex flex-col gap-1">
           <h1 className='text-2xl font-semibold '>Create short link</h1>
           <p className=' text-sm font-medium text-gray-700'>Quickly create random and custom short links.</p>
@@ -27,7 +27,7 @@ function Dashboard() {
         <div className="section3 flex flex-col gap-2">
           <label htmlFor="url" className='font-medium  text-gray-700'>Enter your destination URL</label>
           <input type="text" placeholder='https://example.com/your-url' className='border-1 rounded-md h-10 p-4' id='url' />
-          <div className="buttons flex gap-2 justify-center">
+          <div className="buttons flex flex-col md:flex-row gap-2 justify-center">
             <DashboardButton buttonTXT={"Create random shortlink"} />
             <DashboardButton buttonTXT={"Create custom shortlink"} Icon={Flame} />
           </div>
