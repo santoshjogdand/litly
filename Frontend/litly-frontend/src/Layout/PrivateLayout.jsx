@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 
 function PrivateLayout() {
-  const [status, setStatus] = useState(true);
+  const [status, setStatus] = useState(false);
 
   return (
     <>
