@@ -21,8 +21,8 @@ function UserHeader() {
           </span>
           <Menu onClick={openMenu} className=' md:opacity-0 z-10' />
         </div>
-        <div className={`navMenu z-20 md:h-16 md:relative fixed md:top-0 flex flex-col md:flex-row items-center gap-10 bg-white md:bg-transparent md:w-auto w-full md:pb-0 pb-10 transition-all duration-300 ease-in-out md:shadow-none shadow-lg ${menuStatus?'top-14':'top-[-14rem]'}`}>
-          <div className="text-white md:w-80 w-70 md:h-11 h-12 md:mt-0 mt-8 flex items-center justify-around px-4 gap-2 searchBar bg-purple-500 hover:shadow-purple-500 shadow rounded-3xl">
+        <div className={`navMenu z-10 md:h-16 md:relative fixed md:top-0 flex flex-col md:flex-row items-center gap-10 bg-white md:bg-transparent md:w-auto w-full md:pb-0 pb-10 transition-all duration-300 ease-in-out md:shadow-none shadow-lg ${menuStatus?'top-14':'top-[-10rem]'}`}>
+          <div className="text-white md:w-80 w-70 border border-black md:h-11 h-12 md:mt-0 mt-8 flex items-center justify-around px-4 gap-2 searchBar bg-purple-500 hover:shadow-purple-500 shadow rounded-3xl">
             <input className='outline-none w-full' value={value} onChange={(e) => setValue(e.target.value)} placeholder='Search' /> <Search onClick={searchLink} />
           </div>
           <div className='flex gap-4 items-center justify-center p-0 m-0 '>
@@ -39,7 +39,7 @@ function UserHeader() {
       </nav>
       {menuStatus && (
         <div 
-          className="fixed inset-0 bg-black/30 z-10 md:hidden"
+          className="fixed inset-0 bg-black/30 z-0 md:hidden"
           onClick={() => setMenuStatus(false)}
           aria-hidden="true"
         />
