@@ -17,7 +17,7 @@ function LinkComponent() {
   }
   return (
 
-    <div className={`my-5 bg-white w-full flex flex-col rounded-xl font-medium p-8 gap-4 outline  `}>
+    <div className={`my-5 bg-white w-full flex flex-col rounded-xl font-medium p-8 gap-4   `}>
       <div className="flex flex-col md:flex-row md:gap-5 gap-5">
         <div className="container flex md:gap-5 gap-2">
         <input type="checkbox"
@@ -25,10 +25,10 @@ function LinkComponent() {
           className='w-4 h-4 text-gray-600'
           onChange={(e) => handleChange(e)}
         />
-        <div className="logo md:visible hidden bg-yellow-200 w-10 h-10 rounded-full"></div>
+        <div className="logo md:block hidden bg-yellow-200 w-10 h-10 rounded-full"></div>
         <div className="links flex md:flex-row flex-col gap-4 w-full">
           <div className="innerHead w-full flex flex-col justify-between md:gap-0 gap-2">
-            <h2 className='text-3xl'>Link title</h2>
+            <h2 className='md:text-3xl text-2xl'>Link title</h2>
             <div className="shortenLink flex flex-col">
               <a href='https://litly.app/dsjfnkjdsn' className='text-purple-600 font-medium'>litly.app/dsjfnkjdsn</a>
               <a href='https://www.google.com' className='text-gray-600 font-normal wrap-break-word mr-4'>https://www.google.com/</a>
@@ -41,11 +41,11 @@ function LinkComponent() {
           </div>
         </div>
         </div>
-        <div className="innerOptions flex gap-5 md:h-10 text-sm">
-            <button className='px-2 py-1 border'>Copy</button>
-            <button className='px-2 py-1 border'>Share</button>
-            <button className='px-2 py-1 border'>Edit</button>
-            <button className='px-2 py-1 border'>Delete</button>
+        <div className="innerOptions flex justify-center items-center md:gap-5 gap-2 md:h-10 text-sm">
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Copy</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Share</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Edit</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Delete</button>
           </div>
         
       </div>
