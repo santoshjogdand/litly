@@ -15,7 +15,7 @@ function Dashboard() {
   }, []); // Empty dependency array ensures this runs once after initial render
 
   return (
-    <div className='text-black h-full w-full flex justify-center items-center'>
+    <div className='text-black h-full w-[70%] flex justify-center items-center'>
       <div className="container md:h-[30rem] h-[100dvh] w-full md:rounded-lg bg-white p-8 flex flex-col justify-center md:mx-8 gap-5">
         <div className="section1 flex flex-col ">
           <h1 className='md:text-4xl text-4xl font-semibold'>Create short link</h1>
@@ -43,7 +43,7 @@ function Dashboard() {
         </div>
         
         <div className="buttons flex flex-col md:flex-row gap-2 justify-center">
-            <DashboardButton buttonTXT={`Create Random Shortlink`} className={`flex border-purple-500 justify-center items-center border-1 rounded-lg h-10 px-3 text-white text-sm font-medium bg-purple-500 hover:drop-shadow-purple-500 hover:drop-shadow-md active:drop-shadow-md active:drop-shadow-purple-500 active:bg-purple-600 cursor-pointer`}/>
+            <DashboardButton buttonTXT={`Create Random Shortlink`} className={`flex border-black justify-center items-center border-1 rounded-lg h-10 px-3 text-white text-sm font-medium bg-purple-500 hover:drop-shadow-purple-500 hover:drop-shadow-md active:drop-shadow-md active:drop-shadow-purple-500 active:bg-purple-600 cursor-pointer`}/>
             <DashboardButton buttonTXT={`Create Custom Shortlink`} className={`flex border-purple-500 justify-center items-center border-1 rounded-lg h-10 px-3 text-black text-sm font-medium bg-white hover:drop-shadow-purple-500 hover:drop-shadow-md active:drop-shadow-md active:drop-shadow-purple-500 cursor-pointer`}/>
           </div>
         </div>
