@@ -25,8 +25,16 @@ function Dashboard() {
           <div className="CreatedShortLink border w-fit bg-purple-400 text-white px-2 inset-shadow-sm inset-ring-1 inset-ring-purple-700 inset-shadow-purple-600 rounded-full">
             <h2 className=''><span className='font-medium text-sm'>Shortlink </span> </h2>
         </div>
+        <div className="container flex w-full gap-5">
+        <div className="inputs flex flex-col w-full">
           <label htmlFor="url" className='text-gray-700 text-sm font-medium '>Enter your destination URL*</label>
           <input type="text" placeholder='https://example.com/your-url' className=' text-sm font-medium border-1 rounded-lg h-10 p-4' id='url' />
+        </div>
+        <div className="inputs flex flex-col w-full">
+          <label htmlFor="title" className='text-gray-700 text-sm font-medium '>Enter title for url*</label>
+          <input type="text" placeholder='Url title' className=' text-sm font-medium border-1 rounded-lg h-10 p-4' id='title' />
+        </div>
+        </div>
         <div className="section2 flex md:flex-row flex-col gap-2 items-center w-full text-sm font-medium  text-gray-700">
           <div className="Domain flex flex-col gap-2 md:w-auto w-full">
             <h2>Domain</h2>
