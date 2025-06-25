@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-function LinkComponent() {
+function LinkComponent(props) {
   const [checked, setChecked] = useState([])
   const handleChange = (e) => {
     const value = e.target.value
