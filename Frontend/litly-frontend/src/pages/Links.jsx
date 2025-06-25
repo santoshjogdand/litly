@@ -9,11 +9,11 @@ function Links() {
             <p className='text-gray-700 ml-[2px]'>Manage all shortlinks here!</p>
           </div>
           <div className="options flex opacity-90 md:justify-start gap-4 my-4 md:w-[40%] w-full font-medium text-sm h-8 ">
-            <input type="date" placeholder='Filter by date' className='bg-white  border border-gray-200 rounded-lg md:p-4 px-1 outline-none' id='dateFilter' />
-            <div className='rounded-lg md:p-4 px-2 flex bg-white border border-gray-200 max-w-30 items-center justify-center' id='filter' >
+            <input type="date" placeholder='Filter by date' className='bg-white  border border-gray-200 cursor-pointer rounded-lg md:p-4 px-1 outline-none' id='dateFilter' />
+            <div className='rounded-lg md:p-4 px-2 flex bg-white border border-gray-200 max-w-30 items-center justify-center cursor-pointer' id='filter' >
              Add filters
             </div>
-            <div className='rounded-lg max-w-30 md:flex hidden items-center justify-center text-purple-600' id='filter' >
+            <div className='rounded-lg max-w-30 md:flex hidden items-center justify-center text-purple-600 cursor-pointer' id='filter' >
              Clear all
             </div>
           </div>
