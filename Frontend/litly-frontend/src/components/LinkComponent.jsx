@@ -30,8 +30,8 @@ function LinkComponent(props) {
           <div className="innerHead w-full flex flex-col justify-between md:gap-0 gap-2">
             <h2 className='md:text-3xl text-2xl'>Link title</h2>
             <div className="shortenLink flex flex-col">
-              <a href='https://litly.app/dsjfnkjdsn' className='text-purple-600 font-medium'>litly.app/dsjfnkjdsn</a>
-              <a href='https://www.google.com' className='text-gray-600 font-normal wrap-break-word mr-4'>https://www.google.com/</a>
+              <a href='https://litly.app/dsjfnkjdsn' className='text-purple-600 font-medium w-fit'>litly.app/dsjfnkjdsn</a>
+              <a href='https://www.google.com' className='text-gray-600 font-normal w-fit wrap-break-word mr-4'>https://www.google.com/</a>
             </div>
             <div className='flex md:flex-row flex-col md:gap-5 gap-2 font-medium md:text-md text-sm text-gray-700 mt-2'>
               <span>0 engagments</span>
@@ -42,10 +42,10 @@ function LinkComponent(props) {
         </div>
         </div>
         <div className="innerOptions flex justify-center items-center md:gap-5 gap-2 md:h-10 text-sm">
-            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Copy</button>
-            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Share</button>
-            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Edit</button>
-            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md'>Delete</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md cursor-pointer'>Copy</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md cursor-pointer'>Share</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md cursor-pointer'>Edit</button>
+            <button className='md:px-3 px-2 py-1 border border-gray-300 rounded-md cursor-pointer'>Delete</button>
           </div>
         
       </div>
