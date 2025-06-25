@@ -15,7 +15,7 @@ function Dashboard() {
   }, []); // Empty dependency array ensures this runs once after initial render
 
   return (
-    <div className='text-black h-full w-[70%] flex justify-center items-center'>
+    <div className='text-black h-full md:w-[70%] flex justify-center items-center'>
       <div className="container md:h-[30rem] h-[100dvh] w-full md:rounded-lg bg-white p-8 flex flex-col justify-center md:mx-8 gap-5">
         <div className="section1 flex flex-col ">
           <h1 className='md:text-4xl text-4xl font-semibold'>Create short link</h1>
@@ -25,7 +25,7 @@ function Dashboard() {
           <div className="CreatedShortLink border w-fit bg-purple-400 text-white px-2 inset-shadow-sm inset-ring-1 inset-ring-purple-700 inset-shadow-purple-600 rounded-full">
             <h2 className=''><span className='font-medium text-sm'>Shortlink </span> </h2>
         </div>
-        <div className="container flex w-full gap-5">
+        <div className="container flex w-full gap-5 md:flex-row flex-col">
         <div className="inputs flex flex-col w-full">
           <label htmlFor="url" className='text-gray-700 text-sm font-medium '>Enter your destination URL*</label>
           <input type="text" placeholder='https://example.com/your-url' className=' text-sm font-medium border-1 rounded-lg h-10 p-4' id='url' />
