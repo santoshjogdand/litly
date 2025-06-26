@@ -6,7 +6,7 @@ function PublicLayout() {
   return (
     <>
       <GuestHeader />
-      <main>
+<main className="min-h-screen w-full flex justify-center items-center font-['Jost'] overflow-hidden">
         <Outlet />
       </main>
     </>
