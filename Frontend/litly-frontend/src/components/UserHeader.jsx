@@ -12,13 +12,12 @@ function UserHeader() {
     alert(`Search query: ${value}`);
   }
   return (
-    <header className='w-full fixed z-20 h-16 bg-white shadow-[0_4px_6px_-4px_rgba(0,0,0,0.3)]' >
-
-      <nav className='md:h-full md:top-0 flex z-20 flex-col md:flex-row md:justify-between items-center md:px-10 md:w-auto md:py-8 bg-[white] md:bg-transparent md:shadow-none shadow-lg '>
+    <header className='w-full fixed z-50 h-16 bg-white shadow-md' >
+      <nav className='md:h-full md:top-0 flex z-20 flex-col md:flex-row md:justify-between items-center md:px-10 md:w-auto md:py-8 bg-[white] md:bg-transparent md:shadow-none'>
         <div className="flex flex-row items-center px-5 justify-between w-full md:bg-transparent bg-white h-16 z-20 static topContent transition-all duration-300 ease-in-out ">
-          <span id="logo-1" className="text-transparent bg-clip-text md:py-1 rounded font-bold text-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 md:w-fit block">
+          <a href="/"><span id="logo-1" className="text-transparent bg-clip-text md:py-1 rounded font-bold text-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 md:w-fit block">
             Litly
-          </span>
+          </span></a>
           <Menu onClick={openMenu} className=' md:opacity-0 z-10' />
         </div>
         <div className={`navMenu z-10 md:h-16 md:relative fixed md:top-0 flex flex-col md:flex-row items-center gap-10 bg-white md:bg-transparent md:w-auto w-full md:pb-0 pb-10 transition-all duration-300 ease-in-out md:shadow-none shadow-lg ${menuStatus?'top-14':'top-[-10rem]'}`}>
