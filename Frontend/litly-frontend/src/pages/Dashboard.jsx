@@ -8,12 +8,10 @@ function Dashboard() {
   const [hostname, setHostname] = useState('');
 
   useEffect(() => {
-    // Access window.location.hostname within a client-side context
     if (typeof window !== 'undefined') {
       setHostname(window.location.hostname);
     }
-  }, []); // Empty dependency array ensures this runs once after initial render
-
+  }, []);
   return (
     <div className='text-black h-full md:w-[70%] w-full flex justify-center items-center'>
       <svg preserveAspectRatio="xMidYMid slice" className='absolute inset-0 h-full w-full object-cover opacity-40 z-0' xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800" opacity="0.64"><defs><filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
