@@ -7,15 +7,18 @@ const SideBar = ({ status, setStatus }) => {
     const elements = [
         {
             name: "Home",
-            icon: House
+            icon: House,
+            Link: "/Dashboard"
         },
         {
             name: "Links",
-            icon: Link
+            icon: Link,
+            Link: "/dashboard/links"
         },
         {
             name: "Analytics",
-            icon: ChartNoAxesCombined
+            icon: ChartNoAxesCombined,
+            Link: "/Dashboard/Analytics"
         }
     ]
 
