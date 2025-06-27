@@ -25,7 +25,7 @@ function Dashboard() {
         </div>
         <div className="section3 flex flex-col gap-4">
           <div className="CreatedShortLink border w-fit bg-purple-400 text-white px-2 inset-shadow-sm inset-ring-1 inset-ring-purple-700 inset-shadow-purple-600 rounded-full">
-            <h2 className=''><span className='font-medium text-sm'>Shortlink </span> </h2>
+            <h2 className=''><span className='font-medium text-sm'>Shortlink</span> </h2>
           </div>
           <div className="container flex w-full gap-5 md:flex-row flex-col">
             <div className="inputs flex flex-col w-full gap-1">
@@ -34,7 +34,7 @@ function Dashboard() {
 ' id='url' />
             </div>
             <div className="inputs flex flex-col w-full gap-1">
-              <label htmlFor="title" className='text-gray-700 text-sm font-medium '>Enter title for url*</label>
+              <label htmlFor="title" className='text-gray-700 text-sm font-medium '>Title*</label>
               <input type="text" placeholder='Url title' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
 ' id='title' />
             </div>
