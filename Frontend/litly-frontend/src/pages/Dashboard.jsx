@@ -20,7 +20,7 @@ function Dashboard() {
 	<feGaussianBlur stdDeviation="107" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="119" ry="123.5" cx="240.62248086929327" cy="600.6619189869274" fill="hsl(37, 99%, 67%)"></ellipse><ellipse rx="119" ry="123.5" cx="507.9660046100614" cy="551.430716384541" fill="hsl(316, 73%, 52%)"></ellipse><ellipse rx="119" ry="123.5" cx="363.59150023893875" cy="710.694238359278" fill="hsl(185, 100%, 57%)"></ellipse></g></svg>
       <div className="container z-10 md:h-[30rem] h-full w-full md:rounded-lg backdrop-blur-4xl p-8 md:pt-8 pt-25 flex flex-col justify-center gap-6">
         <div className="section1 flex flex-col ">
-          <h1 className='md:text-4xl text-4xl font-semibold'>Create short link</h1>
+          <h1 className='md:text-4xl text-4xl font-semibold'>Create short links</h1>
           <p className=' text-sm font-medium text-gray-700 pl-1'>Quickly create random and custom short links.</p>
         </div>
         <div className="section3 flex flex-col gap-4">
