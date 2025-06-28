@@ -16,8 +16,7 @@ function LinkComponent(props) {
 
   }
   return (
-
-    <div className={`my-5 bg-white w-full flex flex-col rounded-xl font-medium p-8 gap-4   `}>
+    <div className={`my-5 bg-white w-full flex flex-col rounded-xl font-medium p-8 gap-4 ring-2 ring-purple-500/50 hover:ring-purple-500`}>
       <div className="flex flex-col md:flex-row md:gap-5 gap-5">
         <div className="container flex md:gap-5 gap-2">
         <input type="checkbox"
