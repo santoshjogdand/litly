@@ -6,6 +6,7 @@ import ApiError from "../utils/ApiError.js"
 import asyncHandler from "../utils/AsyncHandler.js"
 const randomShortLink = asyncHandler(async (req, res) => {
     const originalUrl = req.body.originalUrl;
+    const title = req.body.title;
     const userid = req.userid
     const user = await User.findById(userid)
     if (!user) {
@@ -22,6 +23,7 @@ const randomShortLink = asyncHandler(async (req, res) => {
     await urlFound.save();
 
     const generatedLinkData = await Link.create({
+        title: title,
         originalUrl: originalUrl,
         createdBy: userid,
         shortCode: shortCode
