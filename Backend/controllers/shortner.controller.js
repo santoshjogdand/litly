@@ -40,6 +40,7 @@ const randomShortLink = asyncHandler(async (req, res) => {
 });
 
 const customShortLink = asyncHandler(async (req, res) => {
+    
     const originalUrl = req.body.originalUrl;
     const customShortCode = req.body.customUrl;
     const userid = req.userid;
@@ -56,6 +57,7 @@ const customShortLink = asyncHandler(async (req, res) => {
         throw new ApiError(409, "Custom short url already exits try another one")
     }
     const data = await Link.create({
+        title: title,
         originalUrl: originalUrl,
         createdBy: userid,
         shortCode: customShortCode
