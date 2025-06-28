@@ -47,7 +47,7 @@ const deleteUrl = asyncHandler(async (req, res) => {
     const analyticData = await Analytics.findOneAndDelete({
         Link: urlFound._id
     })
-    
+
     res.status(200).json(new ApiResponse({}, "Shortned url removed"))
 
 })
@@ -56,6 +56,7 @@ const updateUrl = asyncHandler(async (req, res) => {
     const userid = req.userid;
     const urlid = req.params.id;
     let shortCode = req.body.customUrl || false;
+    let newDestUrl = req.body.newDestUrl || false;
 
     const urlFound = await Link.findOne({
         createdBy: userid,
@@ -68,17 +69,15 @@ const updateUrl = asyncHandler(async (req, res) => {
     let shortCodeExist;
     if (shortCode) {
         shortCodeExist = await Link.findOne({ shortCode });
-        if(shortCodeExist){
+        if (shortCodeExist) {
             throw new ApiError(409, "Requested custom url is already taken")
         }
-    } else {
-        do {
-            shortCode = generateShotCode();
-            shortCodeExist = await Link.findOne({ shortCode });
-        } while (shortCodeExist);
+        urlFound.shortCode = shortCode;
+    }
+    if (newDestUrl) {
+        urlFound.originalUrl = newDestUrl;
     }
 
-    urlFound.shortCode = shortCode;
     await urlFound.save();
 
     res.status(200).json(new ApiResponse(urlFound, "Shortcode updated successfully"));
