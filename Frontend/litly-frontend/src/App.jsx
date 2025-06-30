@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import PublicLayout from './Layout/PublicLayout';
@@ -11,26 +10,32 @@ import Dashboard from './pages/Dashboard';
 import Analytics from './pages/Analytics';
 import About from './pages/About';
 import Links from './pages/Links';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
-        <Routes >
-          <Route element={<PublicLayout />}>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/Signup' element={<Signup />} />
-            <Route path='/About' element={<About />} />
-          </Route>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes >
+            <Route element={<PublicLayout />}>
+              <Route path='/' element={<Home />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/Signup' element={<Signup />} />
+              <Route path='/About' element={<About />} />
+            </Route>
 
-          <Route path="/Dashboard" element={<PrivateLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="Links" element={<Links />} />
-            <Route path="Analytics" element={<Analytics />} />
-          </Route>
-        </Routes> 
-      </BrowserRouter>
+            <Route element={<ProtectedRoute />}>
+              <Route element={<PrivateLayout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard/links" element={<Links />} />
+                <Route path="/dashboard/analytics" element={<Analytics />} />
+              </Route>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </HelmetProvider>
   )
 }
