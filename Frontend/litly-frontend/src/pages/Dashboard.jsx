@@ -1,6 +1,4 @@
-import { Flame } from 'lucide-react';
-import React, { useState, useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import CustomShortModal from '../components/CustomShortModal';
 import DashboardButton from '../components/DashboardButton';
 
