@@ -11,7 +11,6 @@ import Analytics from './pages/Analytics';
 import About from './pages/About';
 import Links from './pages/Links';
 import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -25,13 +24,10 @@ function App() {
               <Route path='/Signup' element={<Signup />} />
               <Route path='/About' element={<About />} />
             </Route>
-
-            <Route element={<ProtectedRoute />}>
               <Route element={<PrivateLayout />}>
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard/links" element={<Links />} />
                 <Route path="/dashboard/analytics" element={<Analytics />} />
-              </Route>
             </Route>
           </Routes>
         </BrowserRouter>
