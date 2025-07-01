@@ -6,29 +6,34 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    // const [loading, setLoading] = useState(true); // ✅ Added loading state
+    const [loading, setLoading] = useState(true); // For initial auth check
 
     // Auto-login on first load
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         try {
-    //             const res = await axios.get('/me'); // returns user if token is valid
-    //             setUser(res.data.data);
-    //         } catch {
-    //             setUser(null); // not logged in
-    //         } finally {
-    //             setLoading(false); // ✅ Finished loading
-    //         }
-    //     };
-    //     fetchUser();
-    // }, []);
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const res = await axios.get('/me');
+                setUser(res.data.data);
+            } catch (err) {
+                console.error("Error fetching user:", err.response.data.errorMessage)
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchUser();
+    }, []);
+
 
     const login = async (email, password) => {
-        await axios.post('/login', { email, password }); // sets cookie
-        const res = await axios.get('/me'); // fetch user
-        // setLoading(true); // ✅ Finished loading
-        setUser(res.data.data);
-        console.log(user)
+        try {
+            await axios.post('/login', { email, password }); // sets cookie
+            const res = await axios.get('/me'); // fetch user
+            setUser(res.data.data);
+        } catch (error) {
+            throw error
+        } finally {
+            setLoading(false)
+        }
     };
 
     const logout = async () => {
@@ -37,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, isLoggedIn: !!user}}>
+        <AuthContext.Provider value={{ user, login, logout, isLoggedIn: !!user, loading }}>
             {children}
         </AuthContext.Provider>
     );
