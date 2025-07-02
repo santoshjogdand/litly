@@ -19,8 +19,9 @@ function Login() {
       await login(email, password);
       navigate('/Dashboard');
     } catch (err) {
-      console.log(err.response.data.errorMessage)
-      setError(err.response.data.errorMessage)
+      console.log(err)
+      console.log(err?.response?.data?.errorMessage)
+      setError(err?.response?.data?.errorMessage)
     }
   }
 
@@ -45,12 +46,16 @@ function Login() {
             type="email"
             onChange={(e) => { setEmail(e.target.value) }}
             value={email}
+            id='email'
+            autoComplete="email"
             className='h-10 ring-2 ring-purple-500/50 rounded-lg w-full px-4 outline-none focus:ring-purple-500 transition-colors'
           />
 
           <input
             placeholder='Password'
             type="password"
+            id='current-password'
+            autoComplete="current-password"
             onChange={(e) => { setSPassword(e.target.value) }}
             value={password}
             className='h-10 ring-2 ring-purple-500/50 rounded-lg w-full px-4 outline-none focus:ring-purple-500 transition-colors'
