@@ -13,14 +13,11 @@ const redirectLink = asyncHandler(async (req, res) => {
   const { source, medium } = detectSource(referer);
 
   let shortCode = req.params.shortcode;
-  console.log(req.params)
-  console.log("Shortcode",shortcode)
   if(shortCode===""){
     res.status(200).json({
       data: "Incomplete url"
     })
   }
-  console.log("2",shortCode)
   const existedShortCode = await Link.findOne({ shortCode });
 
   if (!existedShortCode) {
