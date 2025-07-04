@@ -12,12 +12,15 @@ const redirectLink = asyncHandler(async (req, res) => {
   const referer = req.headers.referer || '';
   const { source, medium } = detectSource(referer);
 
-  const shortCode = req.params.shortcode;
-  if(shortCode=""){
+  let shortCode = req.params.shortcode;
+  console.log(req.params)
+  console.log("Shortcode",shortcode)
+  if(shortCode===""){
     res.status(200).json({
       data: "Incomplete url"
     })
   }
+  console.log("2",shortCode)
   const existedShortCode = await Link.findOne({ shortCode });
 
   if (!existedShortCode) {
@@ -37,7 +40,7 @@ const redirectLink = asyncHandler(async (req, res) => {
     medium,
     referer: referer || 'unknown',
   });
-
+  console.log(existedShortCode.originalUrl)
   res.redirect(existedShortCode.originalUrl);
 });
 
