@@ -42,11 +42,11 @@ const randomShortLink = asyncHandler(async (req, res) => {
 const customShortLink = asyncHandler(async (req, res) => {
     
     const originalUrl = req.body.originalUrl;
+    const title = req.body.title;
     const customShortCode = req.body.customUrl;
     const userid = req.userid;
 
     const user = await User.findById(userid)
-    console.log("Userid", userid)
     if (!user) {
         throw new ApiError(500, "Invalid login!")
     }
