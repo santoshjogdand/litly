@@ -19,8 +19,6 @@ const randomShortLink = asyncHandler(async (req, res) => {
         shortCode = generateShotCode();
         shortCodeExist = await Link.findOne({ shortCode });
     } while (shortCodeExist);
-    urlFound.shortCode = shortCode;
-    await urlFound.save();
 
     const generatedLinkData = await Link.create({
         title: title,
@@ -34,7 +32,7 @@ const randomShortLink = asyncHandler(async (req, res) => {
         { $push: { urls: generatedLinkData._id } }
     )
     if (generatedLinkData) {
-        return res.status(200).json(new ApiResponse(200, generatedLinkData, "Link shorting successful"))
+        return res.status(200).json(new ApiResponse(generatedLinkData, "Link shorting successful"))
     }
     throw new ApiError(501, "Error while creating shortcode!");
 });
