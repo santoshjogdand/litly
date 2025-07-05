@@ -107,4 +107,14 @@ const userInfo = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(user,"User data fetched"))
 })
 
-export { loginUser, registerUser, userInfo }
+const logoutUser = asyncHandler(async(req,res) =>{
+    console.log("Loggin out user")
+    const options = {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "lax",
+    }
+    res.status(200).clearCookie("accessToken").json(new ApiResponse('', "Login in successful"))
+})
+
+export { loginUser, registerUser, userInfo,logoutUser }
