@@ -1,8 +1,7 @@
-import React from 'react'
 
-const DashboardButton = ({Icon, buttonTXT, className}) => {
+const DashboardButton = ({Icon, buttonTXT, className, func}) => {
   return (
-    <button className={className}>
+    <button className={className} onClick={()=>{func()}}>
         {Icon?<Icon />:'' } {buttonTXT}
     </button>
   )
