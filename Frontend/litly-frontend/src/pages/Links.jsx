@@ -12,6 +12,18 @@ function Links() {
     fetchUrls();
   }, []);
 
+    const deleteLink = async (linkId) => {
+    console.log("Deleted", linkId)
+    axios.delete(`/urls/${linkId}`).then((response) => {
+      console.log(response.data.message)
+      // fetchUrls();
+      toast.success('Link deleted successfully!');
+      setUrls((prev) => prev.filter((url) => url._id !== linkId))
+    }).catch((error) => {
+      toast.error('Failed to delete link.');
+    })
+  }
+
   return (
     <>
       <div className='container overflow-auto z-10 h-full w-full lg:rounded-lg backdrop-blur-4xl p-8 lg:pt-8 lg:mb-8 md:pt-25 pt-12  flex flex-col justify-center gap-6'>
