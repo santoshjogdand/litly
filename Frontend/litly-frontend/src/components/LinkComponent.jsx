@@ -15,7 +15,6 @@ function LinkComponent({ urls }) {
   if (urls.length === 0) return <div>No URLs found.</div>;
 
   return (
-
     <>
       {
         urls.map(url =>
@@ -27,7 +26,13 @@ function LinkComponent({ urls }) {
                   className='w-4 h-4 text-gray-600'
                   onChange={(e) => handleChange(e)}
                 />
-                <div className="logo lg:block hidden bg-yellow-200 w-10 h-10 rounded-full"></div>
+                <div className="logo h-8 w-9 rounded-full flex justify-center items-center">
+                  <img
+                    className="w-5 h-5 object-contain"
+                    src={`https://www.google.com/s2/favicons?sz=64&domain=${new URL(url.originalUrl).hostname}`}
+                    alt="favicon"
+                  />
+                </div>
                 <div className="links flex lg:flex-row flex-col gap-4 w-full">
                   <div className="innerHead w-full flex flex-col justify-between lg:gap-0 gap-2">
                     <h2 className='lg:text-3xl text-2xl'>{!url.title ? "Unnamed" : url.title}</h2>
@@ -49,15 +54,15 @@ function LinkComponent({ urls }) {
                   onClick={async (e) => {
                     await navigator.clipboard.writeText(e.target.value)
                     e.target.firstChild.textContent = "Copied"
-                    setTimeout(async()=>{
+                    setTimeout(async () => {
                       e.target.firstChild.textContent = "Copy"
-                    },3000)
+                    }, 3000)
                   }} className='lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer'>Copy</button>
                 <button className='lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer'>Share</button>
                 <button className='lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer'>Edit</button>
-                <button 
+                <button
 
-                className='lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer'>Delete</button>
+                  className='lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer'>Delete</button>
               </div>
             </div>
           </div>
