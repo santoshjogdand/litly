@@ -1,14 +1,15 @@
 import LinkComponent from '../components/LinkComponent'
 import { useEffect, useState } from 'react'
 import axios from '../utils/axios';
+import { Toaster, toast } from 'react-hot-toast';
 
 function Links() {
   const [urls, setUrls] = useState(null);
+  const fetchUrls = async () => {
+    const res = await axios.get('/urls');
+    setUrls(res.data.data)
+  }
   useEffect(() => {
-    const fetchUrls = async () => {
-      const res = await axios.get('/urls');
-      setUrls(res.data.data)
-    }
     fetchUrls();
   }, []);
 
@@ -24,8 +25,25 @@ function Links() {
     })
   }
 
+    const updateLink = async (id, updatedDetails) => {
+    console.log("Updated", id)
+    axios.put(`/urls/${id}`, {
+      title: updatedDetails.title || false,
+      customUrl: updatedDetails.customUrl || false,
+      newDestUrl: updatedDetails.newDestUrl || false
+    }).then((response) => {
+      console.log(response.data.message)
+      fetchUrls();
+      toast.success('Link updated successfully!');
+    }).catch((error) => {
+      toast.error('Failed to update link.');
+    })
+  }
+
+
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <div className='container overflow-auto z-10 h-full w-full lg:rounded-lg backdrop-blur-4xl p-8 lg:pt-8 lg:mb-8 md:pt-25 pt-12  flex flex-col justify-center gap-6'>
         <div className="headings">
           <h1 className='text-4xl font-semibold ' >Manage Links</h1>
@@ -41,10 +59,11 @@ function Links() {
           </div>
         </div>
         <hr className='opacity-20' />
-        <LinkComponent urls={urls} />
+        <LinkComponent updateLink={updateLink} deleteLink={deleteLink} urls={urls} />
       </div>
     </>
   )
 }
+
 
 export default Links
