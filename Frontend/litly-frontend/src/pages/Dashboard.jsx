@@ -1,15 +1,31 @@
 import { useState, useEffect } from 'react'
 import CustomShortModal from '../components/CustomShortModal';
 import DashboardButton from '../components/DashboardButton';
+import axios from '../utils/axios';
 
 function Dashboard() {
   const [hostname, setHostname] = useState('');
+  const [title, setTitle] = useState('')
+  const [destUrl, setDestUrl] = useState('')
+  const [customUrl, setCustomUrl] = useState('')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setHostname(window.location.hostname);
     }
   }, []);
+
+  const handleCustomShort = async () => {
+    if (destUrl) {
+      axios.post('/randomshort', {
+        "originalUrl": destUrl
+      })
+    }
+  }
+  const handleRandomShort = () => {
+
+  }
+
   return (
     <>
       <svg preserveAspectRatio="xMidYMid slice" className='absolute inset-0 h-full w-full object-cover opacity-40 z-0' xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800" opacity="0.64"><defs><filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -26,12 +42,25 @@ function Dashboard() {
           <div className="container flex w-full gap-5 md:flex-row flex-col">
             <div className="inputs flex flex-col w-full gap-1">
               <label htmlFor="url" className='text-gray-700 text-sm font-medium '>Enter your destination URL*</label>
-              <input type="text" placeholder='https://example.com/your-url' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
-' id='url' />
+              <input
+                id="url"
+                value={destUrl}
+                onChange={(e) => {
+                  setDestUrl(e.target.value)
+                  console.log(destUrl)
+                }}
+                type="text" placeholder='https://example.com/your-url' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
+'/>
             </div>
             <div className="inputs flex flex-col w-full gap-1">
               <label htmlFor="title" className='text-gray-700 text-sm font-medium '>Title*</label>
-              <input type="text" placeholder='Url title' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
+              <input
+                value={title}
+                onChange={(e) => {
+                  setTitle(e.target.value)
+                  console.log(title)
+                }}
+                type="text" placeholder='Url title' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
 ' id='title' />
             </div>
           </div>
@@ -46,14 +75,24 @@ function Dashboard() {
             </div>
             <div className="customLink flex flex-col gap-1 w-full">
               <h2>Custom link (optional)</h2>
-              <input type="text" placeholder='your custom backhalf' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
+              <input
+                value={customUrl}
+                onChange={(e) => {
+                  setCustomUrl(e.target.value)
+                  console.log(customUrl)
+                }}
+                type="text" placeholder='your custom backhalf' className='ring-2  text-sm font-medium ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300
 ' id="customLink" />
             </div>
 
           </div>
           <div className="buttons flex flex-col md:flex-row gap-2 justify-center">
-            <DashboardButton buttonTXT={`Create Random Shortlink`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
-            <DashboardButton buttonTXT={`Create Custom Shortlink`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
+            <DashboardButton
+              func={handleRandomShort}
+              buttonTXT={`Create Random Shortlink`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
+            <DashboardButton
+              func={handleCustomShort}
+              buttonTXT={`Create Custom Shortlink`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
           </div>
         </div>
         <CustomShortModal className="hidden" />
