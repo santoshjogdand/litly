@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react'
 import CustomShortModal from '../components/CustomShortModal';
 import DashboardButton from '../components/DashboardButton';
 import axios from '../utils/axios';
+import { Toaster, toast } from 'react-hot-toast';
 
 function Dashboard() {
   const [hostname, setHostname] = useState('');
   const [title, setTitle] = useState('')
   const [destUrl, setDestUrl] = useState('')
   const [customUrl, setCustomUrl] = useState('')
+  const [shortenUrl, setShortenUrl] = useState('')
+  const [errMessage, setErrMessage] = useState('')
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -17,17 +20,53 @@ function Dashboard() {
 
   const handleCustomShort = async () => {
     if (destUrl) {
-      axios.post('/randomshort', {
+      if(!title){
+        setErrMessage("Please fill the title for url")
+        toast.error("Title is empty")
+      }
+      if(!customUrl){
+        setErrMessage("Please fill the custom backhalf for the url!")
+        toast.error("Custom link is empty")
+      }
+      axios.post('/customshort', {
+        "title": title,
+        "customUrl": customUrl,
         "originalUrl": destUrl
+      }).then((data)=>{
+        console.log(data)
+        setErrMessage('')
+        toast.success("Url shortned successfully")
+        setShortenUrl(`http://localhost/${data.data.data.shortCode}`)
       })
+    }else{
+      setErrMessage("Please fill the destination url")
+      toast.error("Destination url is empty")
     }
   }
   const handleRandomShort = () => {
-
+    if (destUrl) {
+      if(!title){
+        setErrMessage("Please fill the title for url")
+        toast.error("Title is empty")
+      }
+      axios.post('/randomshort', {
+        "title": title,
+        "originalUrl": destUrl
+      }).then((data)=>{
+        console.log(data)
+        setErrMessage('')
+        setShortenUrl(`http://localhost/${data.data.data.shortCode}`)
+      toast.success("Url shortned successfully")
+      })
+    }else{
+      toast.error("Destination url is empty")
+      setErrMessage("Please fill the destination url")
+    }
   }
 
   return (
     <>
+    <Toaster position="top-right" reverseOrder={false} />
       <svg preserveAspectRatio="xMidYMid slice" className='absolute inset-0 h-full w-full object-cover opacity-40 z-0' xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" viewBox="0 0 800 800" opacity="0.64"><defs><filter id="bbblurry-filter" x="-100%" y="-100%" width="400%" height="400%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
         <feGaussianBlur stdDeviation="107" x="0%" y="0%" width="100%" height="100%" in="SourceGraphic" edgeMode="none" result="blur"></feGaussianBlur></filter></defs><g filter="url(#bbblurry-filter)"><ellipse rx="119" ry="123.5" cx="240.62248086929327" cy="600.6619189869274" fill="hsl(37, 99%, 67%)"></ellipse><ellipse rx="119" ry="123.5" cx="507.9660046100614" cy="551.430716384541" fill="hsl(316, 73%, 52%)"></ellipse><ellipse rx="119" ry="123.5" cx="363.59150023893875" cy="710.694238359278" fill="hsl(185, 100%, 57%)"></ellipse></g></svg>
       <div className="container z-10 md:h-[30rem] h-full w-full md:rounded-lg backdrop-blur-4xl p-8 lg:pt-8 md:pt-25 pt-12 flex flex-col justify-center gap-6">
@@ -37,7 +76,7 @@ function Dashboard() {
         </div>
         <div className="section3 flex flex-col gap-4">
           <div className="CreatedShortLink border w-fit bg-purple-400 text-white px-2 inset-shadow-sm inset-ring-1 inset-ring-purple-700 inset-shadow-purple-600 rounded-full">
-            <h2 className=''><span className='font-medium text-sm'>Shortlink</span> </h2>
+            <h2 className=''><span className='font-medium text-sm'>Shortlink <a href={shortenUrl} >{shortenUrl} </a></span> </h2>
           </div>
           <div className="container flex w-full gap-5 md:flex-row flex-col">
             <div className="inputs flex flex-col w-full gap-1">
@@ -94,6 +133,7 @@ function Dashboard() {
               func={handleCustomShort}
               buttonTXT={`Create Custom Shortlink`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
           </div>
+          <p className='text-red-500 font-medium text-sm'>{errMessage}</p>
         </div>
         <CustomShortModal className="hidden" />
       </div>
