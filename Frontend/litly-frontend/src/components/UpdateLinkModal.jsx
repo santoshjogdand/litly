@@ -32,20 +32,22 @@ const UpdateLinkModal = ({ url, setShowUpdateModal, updateLink }) => {
     };
     return (
         // <div key={url._id} className='fixed h-full w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-black/50 z-10 overflow-hidden px-2 transition-all duration-300'>
-            // <div className='relative max-w-[50rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border rounded-lg bg-gray-100 p-10 flex flex-col gap-3 flex-grow'>
-            <ModalWrapper>    
+        // <div className='relative max-w-[50rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border rounded-lg bg-gray-100 p-10 flex flex-col gap-3 flex-grow'>
+        <ModalWrapper>
+            <div className="flex gap-2 flex-col md:w-[50rem] max-w-[90vw]">
                 <span onClick={() => setShowUpdateModal(false)} className='text-2xl font-light absolute top-4 right-6 inline-block cursor-pointer'>x</span>
                 <h2 className='text-2xl font-medium my-2'>Edit/update link details</h2>
                 <h2 className='text-sm font-normal'>only add details which you want to update else leave it blank</h2>
-                <div className='flex w-full flex-col'>
+                <div className='flex flex-col gap-1'>
                     <label className='text-sm mb-1' htmlFor="title">Enter new title</label><input id='title' className='ring-2  text-sm font-normal ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300' type="text" placeholder={url?.title || ''} onChange={(e) => handleChange(e)} />
                     <label className='mt-2 text-sm mb-1' htmlFor="customUrl">Enter new BackHalf</label><input id='customUrl' className='ring-2  text-sm font-normal ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300' type="text" placeholder={url?.shortCode || ''} onChange={(e) => handleChange(e)} />
                     <label className='mt-2 text-sm mb-1' htmlFor="newDestUrl">Enter new Destination Url</label><input id='newDestUrl' className='ring-2  text-sm font-normal ring-purple-500/50 rounded-lg h-10 focus:ring-purple-500  outline-none  p-4 transition-colors duration-300' type="text" placeholder={url?.originalUrl || ''} onChange={(e) => handleChange(e)} />
                 </div>
-                <p className='text-red-500 text-sm font-normal'>{message}</p>
+                <p className='text-red-500 text-sm font-normal '>{message}</p>
                 <DashboardButton func={handleUpdate} buttonTXT={`Update`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
-            </ModalWrapper>
-        
+            </div>
+        </ModalWrapper>
+
     )
 }
 
