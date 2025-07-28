@@ -1,5 +1,6 @@
 import DashboardButton from './DashboardButton'
 import { useState } from 'react'
+import ModalWrapper from './ModalWrapper'
 
 
 
@@ -30,8 +31,9 @@ const UpdateLinkModal = ({ url, setShowUpdateModal, updateLink }) => {
 
     };
     return (
-        <div key={url._id} className='fixed h-full w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-black/50 z-10 overflow-hidden px-2 transition-all duration-300'>
-            <div className='relative max-w-[50rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border rounded-lg bg-gray-100 p-10 flex flex-col gap-3 flex-grow'>
+        // <div key={url._id} className='fixed h-full w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  bg-black/50 z-10 overflow-hidden px-2 transition-all duration-300'>
+            // <div className='relative max-w-[50rem] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 border rounded-lg bg-gray-100 p-10 flex flex-col gap-3 flex-grow'>
+            <ModalWrapper>    
                 <span onClick={() => setShowUpdateModal(false)} className='text-2xl font-light absolute top-4 right-6 inline-block cursor-pointer'>x</span>
                 <h2 className='text-2xl font-medium my-2'>Edit/update link details</h2>
                 <h2 className='text-sm font-normal'>only add details which you want to update else leave it blank</h2>
@@ -42,8 +44,8 @@ const UpdateLinkModal = ({ url, setShowUpdateModal, updateLink }) => {
                 </div>
                 <p className='text-red-500 text-sm font-normal'>{message}</p>
                 <DashboardButton func={handleUpdate} buttonTXT={`Update`} className={`text-sm cursor-pointer inset-shadow-sm inset-shadow-purple-600 text-white bg-purple-500 hover:bg-purple-600 transition-colors duration-300 px-3 rounded-lg h-10`} />
-            </div>
-        </div>
+            </ModalWrapper>
+        
     )
 }
 
