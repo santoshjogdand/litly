@@ -21,7 +21,7 @@ const Favicon = ({ url }) => {
 function LinkComponent({ urls, updateLink, deleteLink }) {
   const [checked, setChecked] = useState([]);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
-  const [showShareModal, setShowShareModal] = useState(true);
+  const [showShareModal, setShowShareModal] = useState(false);
   const [selectedUrl, setSelectedUrl] = useState(null);
 
   const handleChange = (e) => {
@@ -117,7 +117,12 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
                 Copy
               </button>
 
-              <button className="lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer">
+              <button 
+              onClick={() => {
+                  setSelectedUrl(url);
+                  setShowShareModal(true);
+                }}
+              className="lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer">
                 Share
               </button>
 
