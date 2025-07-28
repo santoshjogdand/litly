@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UpdateLinkModal from "./UpdateLinkModal";
 import ErrorBoundary from "./ErrorBoundary";
+import ShareModal from "./ShareModal";
 
 const Favicon = ({ url }) => {
   try {
@@ -20,6 +21,7 @@ const Favicon = ({ url }) => {
 function LinkComponent({ urls, updateLink, deleteLink }) {
   const [checked, setChecked] = useState([]);
   const [showUpdateModal, setShowUpdateModal] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(true);
   const [selectedUrl, setSelectedUrl] = useState(null);
 
   const handleChange = (e) => {
@@ -43,6 +45,12 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
           updateLink={updateLink}
         />
       )}
+    {showShareModal && (
+        <ShareModal
+          url={selectedUrl}
+          setShowShareModal={setShowShareModal}
+        />
+      )}
 
       {urls.map((url) => (
         <div
@@ -58,14 +66,12 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
                 onChange={handleChange}
               />
 
-              {/* ✅ Favicon wrapped in ErrorBoundary */}
               <div className="logo h-8 w-9 rounded-full flex justify-center items-center">
                 <ErrorBoundary>
                   <Favicon url={url.originalUrl} />
                 </ErrorBoundary>
               </div>
 
-              {/* URL Info */}
               <div className="links flex lg:flex-row flex-col gap-4 w-full">
                 <div className="innerHead w-full flex flex-col justify-between lg:gap-0 gap-2">
                   <h2 className="lg:text-3xl text-2xl">
