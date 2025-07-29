@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UpdateLinkModal from "./UpdateLinkModal";
 import ErrorBoundary from "./ErrorBoundary";
 import ShareModal from "./ShareModal";
+import DeleteDialog from "./DeleteDialog";
 
 const Favicon = ({ url }) => {
   try {
@@ -23,6 +24,7 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
   const [showUpdateModal, setShowUpdateModal] = useState(false);
   const [showShareModal, setShowShareModal] = useState(false);
   const [selectedUrl, setSelectedUrl] = useState(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -49,6 +51,13 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
         <ShareModal
           url={selectedUrl}
           setShowShareModal={setShowShareModal}
+        />
+      )}
+     {showDeleteDialog && (
+        <DeleteDialog
+          deleteLink={deleteLink}
+          url={selectedUrl}
+          setShowDeleteDialog={setShowDeleteDialog}
         />
       )}
 
@@ -137,7 +146,10 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
               </button>
 
               <button
-                onClick={() => deleteLink(url._id)}
+                onClick={() =>{ 
+                  setShowDeleteDialog(true)
+                  setSelectedUrl(url)
+                }}
                 className="lg:px-3 px-2 py-1 border border-gray-300 rounded-lg cursor-pointer"
               >
                 Delete
