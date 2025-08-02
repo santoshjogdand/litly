@@ -3,7 +3,8 @@ import ApiError from "../utils/ApiError.js"
 import ApiResponse from "../utils/ApiResponse.js"
 import asyncHandler from "../utils/AsyncHandler.js"
 import { z } from "zod"
-
+import dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
 
 const userSchema = z.object({
     username: z.string().optional(),
