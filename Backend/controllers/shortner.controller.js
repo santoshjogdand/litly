@@ -54,16 +54,22 @@ const customShortLink = asyncHandler(async (req, res) => {
     if (shortCodeExists) {
         throw new ApiError(409, "Custom short url already exits try another one")
     }
-    const data = await Link.create({
+    const generatedLinkData = await Link.create({
         title: title,
         originalUrl: originalUrl,
         createdBy: userid,
         shortCode: customShortCode
     });
-    if (!data) {
+
+    const updatedUser = await User.updateOne({
+        _id: userid
+    },
+        { $push: { urls: generatedLinkData._id } }
+    )
+    if (!generatedLinkData) {
         throw new ApiError(500, "Error while creating short url")
     }
-    return res.status(200).json(new ApiResponse(data, "Created custom short url"));
+    return res.status(200).json(new ApiResponse(generatedLinkData, "Created custom short url"));
     throw new ApiError(500, "Error while creating short url")
 });
 export { randomShortLink, customShortLink }
