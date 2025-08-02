@@ -3,7 +3,7 @@ import asyncHandler from "../utils/AsyncHandler.js";
 import Link from "../models/link.model.js";
 import ApiError from "../utils/ApiError.js";
 import ApiResponse from "../utils/ApiResponse.js";
-import generateShotCode from "../utils/generateShortCode.js";
+import User from "../models/user.model.js";
 
 const getUrls = asyncHandler(async (req, res) => {
     const userid = req.userid;
@@ -36,7 +36,8 @@ const getUrlAnalytic = asyncHandler(async (req, res) => {
 const deleteUrl = asyncHandler(async (req, res) => {
     const userid = req.userid
     const urlid = req.params.id
-    const urlFound = await Link.findOneAndDelete({
+    console.log(userid, urlid)
+    const urlFound = await Link.findOne({
         createdBy: userid,
         _id: urlid
     });
@@ -44,9 +45,23 @@ const deleteUrl = asyncHandler(async (req, res) => {
     if (!urlFound) {
         throw new ApiError(409, "Url doesnt exists")
     }
-    const analyticData = await Analytics.findOneAndDelete({
-        Link: urlFound._id
+    await Link.findOneAndDelete({
+        createdBy: userid,
+        _id: urlid
+    });
+
+    await Analytics.deleteMany({
+        link: urlFound._id
     })
+    await Link.findOneAndDelete({
+        createdBy: userid,
+        _id: urlid
+    });
+    
+    await User.updateOne(
+        { _id: userid },
+        { $pull: { urls: urlid } }
+    );
 
     res.status(200).json(new ApiResponse({}, "Shortned url removed"))
 
