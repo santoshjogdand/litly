@@ -93,8 +93,9 @@ const loginUser = asyncHandler(async (req, res) => {
         maxAge: 2 * 60 * 60 * 1000, // 10 min
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "None",
     }
+    console.log("Secure: ", process.env.NODE_ENV === "production")
     res.status(200).cookie("accessToken", accessToken, options).json(new ApiResponse(loggedInUser, "Login in successful"))
 
 });
