@@ -10,12 +10,14 @@ export const AuthProvider = ({ children }) => {
 
     // Auto-login on first load
     useEffect(() => {
+        console.log("Fetching user")
         const fetchUser = async () => {
             try {
+                console.log("Trying>....")
                 const res = await axios.get('/me');
                 setUser(res.data.data);
             } catch (err) {
-                console.error("Error fetching user:", err.response.data.errorMessage)
+                console.log("Fetch User: ", err)
             } finally {
                 setLoading(false);
             }
@@ -26,11 +28,12 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
+            console.log(email, password)
             await axios.post('/login', { email, password }); // sets cookie
             const res = await axios.get('/me'); // fetch user
             setUser(res.data.data);
         } catch (error) {
-            throw error
+            console.log(error)
         } finally {
             setLoading(false)
         }

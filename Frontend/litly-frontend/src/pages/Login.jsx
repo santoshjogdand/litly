@@ -18,6 +18,7 @@ function Login() {
     }
 
     try {
+      console.log(email, password);
       await login(email, password);
       navigate('/Dashboard');
     } catch (err) {
