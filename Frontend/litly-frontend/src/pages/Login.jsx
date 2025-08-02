@@ -12,8 +12,10 @@ function Login() {
   const navigate = useNavigate(); 
 
   const loginHandler = async () => {
-    console.log(email)
-    console.log(password)
+    if (!email || !password) {
+      setError('Please fill in all fields');
+      return;
+    }
 
     try {
       await login(email, password);
