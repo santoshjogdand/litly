@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import Chart from 'chart.js/auto'
-import { Bar } from 'react-chartjs-2';
+// import Chart from 'chart.js/auto'
+// import { Bar } from 'react-chartjs-2';
 import axios from '../utils/axios'
 
 
