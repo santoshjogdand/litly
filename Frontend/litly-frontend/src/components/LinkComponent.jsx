@@ -70,7 +70,7 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
             <div className="container flex lg:gap-5 gap-2">
               <input
                 type="checkbox"
-                value={`http://localhost/${url.shortCode}`}
+                value={`https://litly.vercel.app/${url.shortCode}`}
                 className="w-4 h-4 text-gray-600"
                 onChange={handleChange}
               />
@@ -88,12 +88,12 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
                   </h2>
                   <div className="shortenLink flex flex-col">
                     <a
-                      href={`http://localhost/${url.shortCode}`}
+                      href={`https://litly.vercel.app/${url.shortCode}`}
                       target="_blank"
                       rel="noreferrer"
                       className="text-purple-600 font-medium w-fit"
                     >
-                      {`http://localhost/${url.shortCode}`}
+                      {`https://litly.vercel.app/${url.shortCode}`}
                     </a>
                     <a
                       href={url.originalUrl}
@@ -113,7 +113,7 @@ function LinkComponent({ urls, updateLink, deleteLink }) {
 
             <div className="innerOptions flex justify-center items-center lg:gap-5 gap-2 lg:h-10 text-sm">
               <button
-                value={`http://localhost/${url.shortCode}`}
+                value={`https://litly.vercel.app/${url.shortCode}`}
                 onClick={async (e) => {
                   await navigator.clipboard.writeText(e.target.value);
                   e.target.textContent = "Copied";
