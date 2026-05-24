@@ -36,7 +36,7 @@ function Dashboard() {
         console.log(data)
         setErrMessage('')
         toast.success("Url shortned successfully")
-        setShortenUrl(`http://localhost/${data.data.data.shortCode}`)
+        setShortenUrl(`https://litly.vercel.app/${data.data.data.shortCode}`)
       })
     }else{
       setErrMessage("Please fill the destination url")
@@ -55,7 +55,7 @@ function Dashboard() {
       }).then((data)=>{
         console.log(data)
         setErrMessage('')
-        setShortenUrl(`http://localhost/${data.data.data.shortCode}`)
+        setShortenUrl(`https://litly.vercel.app/${data.data.data.shortCode}`)
       toast.success("Url shortned successfully")
       })
     }else{
