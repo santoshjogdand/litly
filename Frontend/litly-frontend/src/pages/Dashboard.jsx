@@ -14,7 +14,7 @@ function Dashboard() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setHostname(window.location.hostname);
+      setHostname("litly.vercel.app/");
     }
   }, []);
 
